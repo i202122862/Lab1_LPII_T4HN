@@ -1,0 +1,38 @@
+package com.cl1.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuario")
+public class Empleado {
+
+	
+	@Id
+	@Column(name="IdEmpleado")
+	private int idEmpleado;
+	
+	@Column(name="Apellidos")
+	private String apellidos;
+	
+	@Column(name="Nombres")
+	private String nombres;
+	
+	@Column(name="Edad")
+	private int edad ;
+	
+	@Column(name="Sexo")
+	private String sexo ;
+
+	
+	@Column(name="Salario")
+	private Double salario ;
+	
+
+	
+	
+}
+
+}

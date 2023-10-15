@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.cl1.models.Empleado"/>
+    <fullyQualifiedTypeName name="com.cl1.controlador.EmpleadoController"/>
+    <fullyQualifiedTypeName name="javax.sound.midi.Soundbank"/>
+</qualifiedTypeNameHistroy>

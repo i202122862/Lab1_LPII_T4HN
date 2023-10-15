@@ -1,0 +1,129 @@
+package com.cl1.controlador;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class UsuarioController {
+
+	
+	public String createUsuario(String nombre,String apellido,String ciudad) {
+		
+		SessionFactory sessionFactory;
+		sessionFactory=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class).buildSessionFactory();
+		
+		Session session;
+		session=sessionFactory.openSession();
+		
+		try {
+			Usuario usuario;
+			usuario=new Usuario(nombre,apellido,ciudad);
+			session.beginTransaction();
+			session.save(usuario);
+			session.getTransaction().commit();
+			
+			sessionFactory.close();
+			
+			return "usuario creado";
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return "Error al crear usuario";		
+		
+	}
+	
+	
+	
+	public String deleteUsuario(int idUsuario) {
+		
+		SessionFactory sessionFactory;
+		sessionFactory=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class).buildSessionFactory();
+		
+		Session session;
+		session=sessionFactory.openSession();
+		
+		try {
+
+			session.beginTransaction();
+			
+			Usuario usuario=session.get(Usuario.class,idUsuario);
+			session.delete(usuario);
+			session.getTransaction().commit();
+			
+			sessionFactory.close();
+			
+			return "usuario eliminado";
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return "Error al eliminar usuario";		
+		
+	}
+	
+	
+	public String updateUsuario(int idUsuario,String nombre) {
+		
+		SessionFactory sessionFactory;
+		sessionFactory=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class).buildSessionFactory();
+		
+		Session session;
+		session=sessionFactory.openSession();
+		
+		try {
+
+			session.beginTransaction();
+			
+			Usuario usuario=session.get(Usuario.class,idUsuario);
+			usuario.setNombre(nombre);
+					
+			session.update(usuario);
+			session.getTransaction().commit();
+			
+			sessionFactory.close();
+			
+			return "usuario eliminado";
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return "Error al eliminar usuario";		
+		
+	}
+	
+	
+	
+	public String getUsuario(int idUsuario) {
+		
+		SessionFactory sessionFactory;
+		sessionFactory=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Usuario.class).buildSessionFactory();
+		
+		Session session;
+		session=sessionFactory.openSession();
+		
+		try {
+
+			session.beginTransaction();
+			
+			Usuario usuario=session.get(Usuario.class,idUsuario);
+			session.getTransaction().commit();
+			
+			sessionFactory.close();
+			
+			return usuario.toString()
+					;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		return "Ususario no eixste";		
+		
+	}
+}
